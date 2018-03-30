@@ -17,9 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-class MainAplication: AppCompatActivity() {
+class MainActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
+        setContentView(R.layout.main_activity)
     }
 }
