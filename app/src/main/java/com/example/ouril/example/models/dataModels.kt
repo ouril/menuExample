@@ -1,3 +1,6 @@
 package com.example.ouril.example.models
 
-data class City(val name:String)
+data class CityWhether(
+        val name:String,
+        val whether: Whether
+)
