@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.ouril.example.models.CityWhether
+import kotlinx.android.synthetic.main.item_city.view.*
 
 
 interface WhetherAdapterClickListener {
@@ -21,7 +22,14 @@ interface WhetherAdapterClickListener {
 class WhetherAdapter(private val myDataset: ArrayList<CityWhether>) :
         RecyclerView.Adapter<WhetherAdapter.ViewHolder>() {
 
-    class ViewHolder(val textView: View): RecyclerView.ViewHolder(textView) {
+    class ViewHolder(val textView: View): RecyclerView.ViewHolder(textView), WhetherAdapterClickListener {
+        override fun removeView(position: Int){
+
+        }
+
+        override fun editView(position: Int) {
+            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        }
 
     }
 
@@ -36,7 +44,7 @@ class WhetherAdapter(private val myDataset: ArrayList<CityWhether>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        //holder.textView.text = myDataset[position].toString()
+        holder.textView.txtTitle.text = myDataset[position].name
     }
     
     override fun getItemCount() = myDataset.size
