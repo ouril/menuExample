@@ -1,6 +1,5 @@
 package com.example.ouril.example
 
-import android.support.v7.widget.CardView
 import android.support.v7.widget.PopupMenu
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -11,7 +10,6 @@ import android.widget.TextView
 import com.example.ouril.example.models.CityWhether
 import com.example.ouril.example.models.Whether
 import kotlinx.android.synthetic.main.item_city.view.*
-import javax.security.auth.callback.Callback
 
 
 interface WhetherAdapterClickListener {
@@ -21,6 +19,8 @@ interface WhetherAdapterClickListener {
     fun editView(position: Int)
 
     fun addView(text: String, whether: Whether)
+
+    fun clearView()
 }
 
 
@@ -39,6 +39,11 @@ class WhetherAdapter(private val myDataset: ArrayList<CityWhether>) :
     override fun addView(text: String, whether: Whether) {
         val cityWhether = CityWhether(text, whether)
         myDataset.add(cityWhether)
+        notifyDataSetChanged()
+    }
+
+    override public fun clearView(){
+        myDataset.clear()
         notifyDataSetChanged()
     }
 
@@ -66,13 +71,9 @@ class WhetherAdapter(private val myDataset: ArrayList<CityWhether>) :
 
         override fun onMenuItemClick(item: MenuItem?): Boolean {
             when(item!!.itemId) {
-                R.id.menu_edit -> {
-                    return true
-                }
                 R.id.menu_delete -> {
                     removeView(this.adapterPosition)
                     return true
-
                 }
             }
             return false
