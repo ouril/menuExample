@@ -3,16 +3,20 @@ package com.example.ouril.example
 
 
 import android.os.Bundle
+import android.support.v4.widget.DrawerLayout
+import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 
 
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import com.example.ouril.example.models.CityWhether
 import com.example.ouril.example.models.Whether
+
 
 
 class MainActivity: AppCompatActivity() {
@@ -31,6 +35,12 @@ class MainActivity: AppCompatActivity() {
             cites.add(CityWhether(name, Whether.SUNNY))
         }
         createRecycle(cites)
+        val toolbar = findViewById(R.id.toolbar) as Toolbar
+        val drawer: DrawerLayout = findViewById(R.id.drawer)
+        val toggle = ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        drawer.addDrawerListener(toggle)
+        toggle.syncState()
 
     }
 
